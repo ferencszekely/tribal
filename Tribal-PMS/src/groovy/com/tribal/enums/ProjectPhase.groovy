@@ -11,6 +11,8 @@ public enum ProjectPhase {
 	
 	final String value
 	
+	ProjectPhase(String value) { this.value = value }
+	
 	@Override
 	String toString() { value }
 

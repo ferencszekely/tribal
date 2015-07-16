@@ -14,4 +14,8 @@ class Person {
 		lastName (blank: false, maxSize: 30, nullable:false)
 		account (nullable: false)
     }
+	
+	def getFullName() {
+		firstName + ' ' + lastName
+	}
 }

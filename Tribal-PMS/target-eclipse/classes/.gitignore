@@ -1,4 +1,10 @@
+/asset/
+/com/
+/grails/
+/hibernate/
+/javascripts/
 /org/
+/spring/
 /AssetPipelineBootStrap$_closure1.class
 /AssetPipelineBootStrap.class
 /BootStrap$_closure1.class
@@ -17,6 +23,7 @@
 /Config$_run_closure2$_closure7.class
 /Config$_run_closure2$_closure8.class
 /Config$_run_closure2.class
+/Config$_run_closure3$_closure9.class
 /Config$_run_closure3.class
 /Config.class
 /DataSource$_run_closure1.class
@@ -68,14 +75,5 @@
 /UrlMappings$__clinit__closure1$_closure2.class
 /UrlMappings$__clinit__closure1.class
 /UrlMappings.class
-/asset/
-/grails/
 /resources$_run_closure1.class
 /resources.class
-/com/
-/Config$_run_closure1$_closure5$_closure6$_closure7.class
-/Config$_run_closure1$_closure5$_closure6.class
-/Config$_run_closure1$_closure5.class
-/Config$_run_closure2$_closure9.class
-/Config$_run_closure4.class
-/Config$_run_closure3$_closure9.class

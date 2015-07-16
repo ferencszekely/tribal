@@ -65,8 +65,6 @@ class BootStrap {
 			pers9.save(flush: true)
 		
 		
-		
-		
 		assert Account.count() == 9
 		assert Role.count() == 3
 		assert AccountRole.count() == 9

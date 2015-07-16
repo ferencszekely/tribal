@@ -15,6 +15,7 @@
   		<asset:stylesheet src="bootstrap.min.css"/> 
   		<asset:stylesheet src="simple-sidebar.css"/>
 		<asset:javascript src="bootstrap.min.js"/>
+		<asset:javascript src="projects.js"/>
 		<g:layoutHead/>
 	</head>
 	<body>
@@ -25,18 +26,18 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <g:link action="index" controller="projects">
                         Project Management
-                    </a>
+                    </g:link>
                 </li>
                 <li>
-                    <a href="#">Projects</a>
+                    <g:link action="overView" controller="projects">Projects</g:link>
                 </li>
                 <li>
-                    <a href="#">Managers</a>
+                    <g:link action="managers" controller="projects">Managers</g:link>
                 </li>
                 <li>
-                    <a href="#">Technical Leads</a>
+                    <g:link action="techLeads" controller="projects">Technical Leads</g:link>
                 </li>
                 <li>
                     <a href="/j_spring_security_logout">Logout</a>
