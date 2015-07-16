@@ -103,6 +103,9 @@ log4j.main = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
+	appenders {
+		'null' name: "stacktrace"
+	}
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
@@ -115,6 +118,9 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+		   
+   info 'grails.app',
+	   'org.apache.http'
 }
 
 
