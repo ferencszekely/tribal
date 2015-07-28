@@ -2,6 +2,8 @@ import com.tribal.security.Account
 import com.tribal.security.AccountRole
 import com.tribal.security.Role
 import com.tribal.Person
+import com.tribal.Projects
+import com.tribal.enums.ProjectPhase
 
 class BootStrap {
 
@@ -64,11 +66,58 @@ class BootStrap {
 		def pers9 = new Person(firstName: 'Manager', lastName: 'Four', account: manager4)
 			pers9.save(flush: true)
 		
+			
+		def project1 = new Projects(
+			name: 'InfoTour',
+			code: 'inf001',
+			techLead: tech1,
+			manager: manager1,
+			deliveryDate: new Date(),
+			phase: ProjectPhase.BRIEFING,
+			priority: 8,
+			description: 'Giving information about tourism'	
+		)
+		project1.save(flush: true)
+		
+		def project2 = new Projects(
+			name: 'Sports',
+			code: 'Sp1x',
+			techLead: tech2,
+			manager: manager4,
+			deliveryDate: new Date(),
+			phase: ProjectPhase.SCOPING,
+			priority: 2
+		)
+		project2.save(flush: true)
+		
+		def project3 = new Projects(
+			name: 'Project3',
+			code: 'prj003',
+			techLead: tech3,
+			manager: manager3,
+			deliveryDate: new Date(),
+			phase: ProjectPhase.QA,
+			priority: 1
+		)
+		project3.save(flush: true)
+		
+		def project4 = new Projects(
+			name: 'Project4',
+			code: 'prj004',
+			techLead: tech4,
+			manager: manager2,
+			deliveryDate: new Date(),
+			phase: ProjectPhase.SCOPING,
+			priority: 6
+		)
+		project4.save(flush: true)
+			
 		
 		assert Account.count() == 9
 		assert Role.count() == 3
 		assert AccountRole.count() == 9
 		assert Person.count() == 9
+		assert Projects.count() == 4
 		
     }
     def destroy = {

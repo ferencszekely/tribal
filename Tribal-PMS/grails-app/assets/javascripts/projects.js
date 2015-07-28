@@ -6,6 +6,7 @@ $(document).ready(function() {
 	// Toggle for new project button
 	$("#add").on("click", function() {
 		$(".addNewProject").toggle();
+		$(".alert").hide();
 	});
 	// Init. datepicker
 	$( "#date" ).datepicker({

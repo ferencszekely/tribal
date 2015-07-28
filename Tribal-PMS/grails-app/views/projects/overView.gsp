@@ -55,7 +55,7 @@
 	<g:if test="${flash.success}">
 		<div class="col-md-12 notifyP">
 			<div class="alert alert-success" role="alert">
-				<p>Project successfully added. See below.</p>
+				<p>Success. See below.</p>
 			</div> <!-- /alert -->
 		</div> <!-- /col-md-12 -->
 	</g:if>
@@ -91,7 +91,7 @@
 								<td><g:personForProject project="${p}" lead="true" /></td>
 								<td><g:personForProject project="${p}" manager="true"/></td>
 								<td>${p?.deliveryDate?.format('yyyy-MM-dd')}</td>
-								<td>${p?.phase}</td>
+								<td><span class="label label-${currentPhase[p?.phase]}">${p?.phase}</span></td>
 								<td>${p?.priority}</td>
 								<td><g:link action="edit" id="${p?.id}"><button type="button" class="btn btn-primary">Edit</button></g:link></td>
 							</tr>

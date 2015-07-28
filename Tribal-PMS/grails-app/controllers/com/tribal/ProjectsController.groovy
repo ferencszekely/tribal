@@ -12,6 +12,17 @@ import grails.converters.JSON
 class ProjectsController {
 	
 	def springSecurityService
+	def dateFormat = new java.text.SimpleDateFormat("MM/dd/yyyy")
+	
+	// status labels for view
+	private def currentPhase = [
+		(ProjectPhase.BRIEFING)		: 'default',
+		(ProjectPhase.SCOPING)  	: 'warning',
+		(ProjectPhase.INTERACTION)  : 'info',
+		(ProjectPhase.DEVELOPMENT)  : 'primary',
+		(ProjectPhase.QA)			: 'danger',
+		(ProjectPhase.RELEASE)		: 'success'	
+	]
 	
 	// findig all projects in the database, using Hibernate
 	private def getProjects() {
@@ -28,12 +39,13 @@ class ProjectsController {
 	}
 	
 	// Getting a list of managers for selection
-	private def managers() {
+	private def mans() {
 		def mans = Role.findByAuthority('ROLE_MANAGER')
 		def manAccounts = AccountRole.findAllByRole(mans)
 		def managers = Person.findAllByAccountInList(manAccounts.account)
 		return managers
 	}
+	
 	
 	// welcome page for the admin
 	def index() {
@@ -46,20 +58,8 @@ class ProjectsController {
 	 * Projects section - listing all projects and related information
 	 */
 	def overView() {
-		if (!getProjects()) {
-		def prj = new Projects()
-			prj.name = "test01"
-			prj.code = "ttt01"
-			prj.techLead = Account.findByUsername("tech1")
-			prj.manager = Account.findByUsername("mngr1")
-			prj.deliveryDate = new Date()
-			prj.phase = ProjectPhase.BRIEFING
-			prj.priority = 1
-			prj.description = "Desc"
-			prj.save(failOnError: true)
-		}
 		
-		[projects: getProjects(), t: techs(), m: managers(), phases: ProjectPhase.values()]
+		[projects: getProjects(), t: techs(), m: mans(), phases: ProjectPhase.values(), currentPhase: currentPhase]
 	}
 	
 	/*
@@ -69,7 +69,6 @@ class ProjectsController {
 	def addNew() {
 		// Avoiding use of bindData, as I had many problems/bugs in the past with that
 		if (params && params.date) {
-			def dateFormat = new java.text.SimpleDateFormat("MM/dd/yyyy")
 			def date = dateFormat.parse(params.date)
 			
 			def p = new Projects()
@@ -81,7 +80,7 @@ class ProjectsController {
 				p.phase = params.phase ? ProjectPhase.values().find {it.value == params.phase} : null
 				p.priority = params.priority.toInteger()
 				p.description = params.desc
-				if (p.save()) {
+				if (p.save(flush:true)) {
 					flash.success = true
 					return redirect(action: 'overView')
 				} else {
@@ -105,7 +104,7 @@ class ProjectsController {
 			def currentLead = Person.findByAccount(project.techLead)
 			def currentManager = Person.findByAccount(project.manager)
 			
-			[p: project, t: techs(), m: managers(), lead: currentLead, manager: currentManager, phases: ProjectPhase.values()]
+			[p: project, t: techs(), m: mans(), lead: currentLead, manager: currentManager, phases: ProjectPhase.values()]
 		
 		} else {
 			flash.error = true
@@ -113,8 +112,40 @@ class ProjectsController {
 		}
 	}
 	
+	// updating specified project
 	def submitEdit() {
-		
+		def project = Projects.get(params.project.toInteger())
+		def date = dateFormat.parse(params.date)
+		if (project) {
+			project.name = params.name
+			project.code = params.code
+			project.techLead = Account.findByUsername(params.techLead)
+			project.manager = Account.findByUsername(params.manager)
+			project.deliveryDate = date
+			project.phase = params.phase ? ProjectPhase.values().find {it.value == params.phase} : null
+			project.priority = params.priority.toInteger()
+			project.description = params.desc
+			
+			if (project.save(flush: true)) {
+				flash.success = true
+				return redirect(action: 'overView')
+			} else {
+				flash.error = true
+				return render(view: 'edit', params: [p: params])
+			}
+		} else {
+			flash.error = true
+			return render(view: 'edit', params: [p: params])
+		}
+	}
+	
+	// Listing managers
+	def managers() {
+		[m: mans()]
+	}
+	
+	def techLeads() {
+		[t: techs()]
 	}
 	
 	/*

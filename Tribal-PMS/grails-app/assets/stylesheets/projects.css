@@ -1,7 +1,7 @@
 /*
 	Any and all CSS for the Projects section should go here
 */
-.addNewProject, .pInfos, .notifyP {
+.addNewProject, .pInfos, .notifyP, .editProjects {
 	margin-top: 4%;
 }
 .inUse {

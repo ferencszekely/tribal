@@ -6,16 +6,19 @@
 <title>Edit Project</title>
 </head>
 <body>
+	<div class="row">
+		<g:link action="overView"><button type="button" class="btn btn-primary back">Back</button></g:link>
+	</div> <!-- /row -->
  	<div class="row">
  		<g:if test="${flash.error}">
   			<div class="col-md-6">
   				<div class=" row alert alert-danger" role="alert">
-  					<span>No Project found!</span>
+  					<span>Whoops. Please try again.</span>
   				</div>
   			</div> <!-- /col-md -->
   		</g:if>
   		<g:else>
-	  		<div class="col-md-6">
+	  		<div class="col-md-6 editProjects">
 	  			<g:form action="submitEdit" class="form">
 	  				<div class="form-group">
 						<label for="name">Project Name</label>
@@ -27,15 +30,15 @@
 					</div> <!-- /form-group -->
 					<div class="form-group">
 						<label for="techlead">Technical Lead</label>
-						<g:select from="${t}" optionKey="account" optionValue="${{it.firstName +' '+ it.lastName}}" name="techLead" class="form-control" value="${lead?.getFullName()}" noSelection="['':'Please Select...']"/>
+						<g:select from="${t}" optionKey="account" optionValue="${{it.firstName +' '+ it.lastName}}" name="techLead" class="form-control" value="${lead?.getFullName()}"/>
 					</div> <!-- /form-group -->
 					<div class="form-group">
 						<label for="techlead">Project Manager</label>
-						<g:select from="${m}" optionKey="account" optionValue="${{it.firstName +' '+ it.lastName}}" name="manager" class="form-control" value="${manager?.getFullName()}" noSelection="['':'Please Select...']"/>
+						<g:select from="${m}" optionKey="account" optionValue="${{it.firstName +' '+ it.lastName}}" name="manager" class="form-control" value="${manager?.getFullName()}"/>
 					</div> <!-- /form-group -->
 					<div class="form-group">
 						<label for="date">Delivery Date</label>
-						<input type="text" class="form-control" name="date" id="date" value="${p?.deliveryDate?.format('yyyy-MM-dd')}" required>
+						<input type="text" class="form-control" name="date" id="date" value="${p?.deliveryDate?.format('MM/dd/yyyy')}" required>
 					</div> <!-- /form-group -->
 					<div class="form-group">
 						<label for="phase">Phase</label>
@@ -53,6 +56,7 @@
 					<div class="form-group">
 						<button class="btn btn-info" type="submit" id="goProject">Submit</button>
 					</div> <!-- /form-group -->
+					<input type="hidden" value="${p?.id}" name="project">
 	  			</g:form>
 	  		</div> <!-- /col-md -->
   		</g:else>
