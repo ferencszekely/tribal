@@ -19,6 +19,21 @@ class ProjectsController {
 	} // loads the entire table before sorting, it is advisible to use .list instead
 	// for large tables
 	
+	// Getting a list of technical leads for selection
+	private def techs() {
+		def techs = Role.findByAuthority('ROLE_TECH')
+		def techAccounts = AccountRole.findAllByRole(techs)
+		def techLeads = Person.findAllByAccountInList(techAccounts.account)
+		return techLeads
+	}
+	
+	// Getting a list of managers for selection
+	private def managers() {
+		def mans = Role.findByAuthority('ROLE_MANAGER')
+		def manAccounts = AccountRole.findAllByRole(mans)
+		def managers = Person.findAllByAccountInList(manAccounts.account)
+		return managers
+	}
 	
 	// welcome page for the admin
 	def index() {
@@ -43,18 +58,8 @@ class ProjectsController {
 			prj.description = "Desc"
 			prj.save(failOnError: true)
 		}
-		// Creating a list of technical leads for selection
-		def techs = Role.findByAuthority('ROLE_TECH')
-		def techAccounts = AccountRole.findAllByRole(techs)
-		def techLeads = Person.findAllByAccountInList(techAccounts.account)
 		
-		// Creating a list of managers for selection
-		def mans = Role.findByAuthority('ROLE_MANAGER')
-		def manAccounts = AccountRole.findAllByRole(mans)
-		def managers = Person.findAllByAccountInList(manAccounts.account)
-		
-		
-		[projects: getProjects(), t: techLeads, m: managers, phases: ProjectPhase.values()]
+		[projects: getProjects(), t: techs(), m: managers(), phases: ProjectPhase.values()]
 	}
 	
 	/*
@@ -97,11 +102,23 @@ class ProjectsController {
 	def edit(Integer id) {
 		def project = Projects.get(id)
 		if (project) {
+			def currentLead = Person.findByAccount(project.techLead)
+			def currentManager = Person.findByAccount(project.manager)
 			
+			[p: project, t: techs(), m: managers(), lead: currentLead, manager: currentManager, phases: ProjectPhase.values()]
+		
+		} else {
+			flash.error = true
+			return render(view: 'edit')
 		}
 	}
+	
+	def submitEdit() {
+		
+	}
+	
 	/*
-	 * We need to verify instanly if a priority is
+	 * We need to verify instantly if a priority is
 	 * already in use. Accepts an integer and returns either
 	 * success or error.
 	 * @param priority
