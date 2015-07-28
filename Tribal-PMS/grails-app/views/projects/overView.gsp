@@ -62,9 +62,8 @@
 	<g:if test="${flash.error}">
 		<div class="col-md-12 notifyP">
 			<div class=" row alert alert-danger" role="alert">
-		  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-		  		<span class="sr-only">Error:</span>
-		  		Whoops, something went wrong. Please try again!
+		  		<span class="" aria-hidden="true"></span>
+		  		Whoops, something went wrong. Please try again! (Make sure to use Alphanumeric for both project name and code - Meaning letters and numbers only and no spaces!)
 			</div> <!-- /alert -->
 		</div> <!-- /col-md-12 -->
 	</g:if>

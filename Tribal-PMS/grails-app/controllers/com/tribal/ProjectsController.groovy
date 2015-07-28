@@ -15,8 +15,10 @@ class ProjectsController {
 	
 	// findig all projects in the database, using Hibernate
 	private def getProjects() {
-		Projects.findAll()
-	} // TODO sort by priority
+		Projects.findAll().sort {a,b -> a.priority <=> b.priority }
+	} // loads the entire table before sorting, it is advisible to use .list instead
+	// for large tables
+	
 	
 	// welcome page for the admin
 	def index() {
@@ -74,7 +76,7 @@ class ProjectsController {
 				p.phase = params.phase ? ProjectPhase.values().find {it.value == params.phase} : null
 				p.priority = params.priority.toInteger()
 				p.description = params.desc
-				if (p.save(failOnError: true)) {
+				if (p.save()) {
 					flash.success = true
 					return redirect(action: 'overView')
 				} else {
