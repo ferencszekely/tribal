@@ -15,11 +15,11 @@
 			<g:form action="addNew" class="form">
 				<div class="form-group">
 					<label for="name">Project Name</label>
-					<input type="text" class="form-control" id="name" name="name" placeholder="Enter the Alphanumeric project name">
+					<input type="text" class="form-control" id="name" name="name" placeholder="Enter the Alphanumeric project name" required>
 				</div> <!-- /form-group -->
 				<div class="form-group">
 					<label for="code">Project Code</label>
-					<input type="text" class="form-control" id="code" name="code" placeholder="Enter the Alphanumeric project code">
+					<input type="text" class="form-control" id="code" name="code" placeholder="Enter the Alphanumeric project code" required>
 				</div> <!-- /form-group -->
 				<div class="form-group">
 					<label for="techlead">Technical Lead</label>
@@ -31,7 +31,7 @@
 				</div> <!-- /form-group -->
 				<div class="form-group">
 					<label for="date">Delivery Date</label>
-					<input type="text" class="form-control" name="date" id="date">
+					<input type="text" class="form-control" name="date" id="date" required>
 				</div> <!-- /form-group -->
 				<div class="form-group">
 					<label for="phase">Phase</label>
@@ -39,8 +39,8 @@
 				</div> <!-- /form-group -->
 				<div class="form-group">
 					<label for="prio">Priority</label>
-					<input type="number" class="form-control" name="priority" id="priority" placeholder="Please enter a number. See the project list below for priorities.">
-					<p class="inUse" id="inUse">Error: Priority is used by another project!</p>
+					<input type="number" class="form-control" name="priority" id="priority" placeholder="Please enter a number. See the project list below for priorities." required>
+					<p class="inUse" id="inUse">Error: Priority is either used by another project or it is not a valid number!</p>
 				</div> <!-- /form-group -->
 				<div class="form-group">
 					<label for="desc">Description</label>
@@ -53,16 +53,20 @@
 		</div> <!-- /col-md -->
 	</div> <!-- /nested row -->
 	<g:if test="${flash.success}">
-		<div class="alert alert-success" role="alert">
-			<p>Project successfully added. See below.</p>
-		</div> <!-- /alert -->
+		<div class="col-md-12 notifyP">
+			<div class="alert alert-success" role="alert">
+				<p>Project successfully added. See below.</p>
+			</div> <!-- /alert -->
+		</div> <!-- /col-md-12 -->
 	</g:if>
 	<g:if test="${flash.error}">
-		<div class="alert alert-danger" role="alert">
-	  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-	  		<span class="sr-only">Error:</span>
-	  		Whoops, something went wrong. Please try again!
-		</div> <!-- /alert -->
+		<div class="col-md-12 notifyP">
+			<div class=" row alert alert-danger" role="alert">
+		  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		  		<span class="sr-only">Error:</span>
+		  		Whoops, something went wrong. Please try again!
+			</div> <!-- /alert -->
+		</div> <!-- /col-md-12 -->
 	</g:if>
 	<g:if test="${projects}">
 		<div class="col-md-12 pInfos">

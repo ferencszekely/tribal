@@ -4,18 +4,18 @@
  */
 $(document).ready(function() {
 	// Toggle for new project button
-	$('#add').on("click", function() {
-		
+	$("#add").on("click", function() {
+		$(".addNewProject").toggle();
 	});
-	
 	// Init. datepicker
 	$( "#date" ).datepicker({
 		minDate: 0
 	});
 	
-	$('#priority').keyup(function() {
+	// Monitoring changes in priority field
+	$('#priority').on("keyup change", function() {
 	    $.ajax({
-	        url: '${createLink(controller: 'projects', action: 'verifyPriority')}',
+	        url: '/projects/verifyPriority',
 	        dataType: "json",
 	        data: {
 	            pr: $('#priority').val()
@@ -34,6 +34,7 @@ $(document).ready(function() {
 	    });
 	   
      });
+	
 	
 	
 });

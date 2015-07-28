@@ -125,6 +125,8 @@ log4j.main = {
 
 
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.fii.rejectPublicInvocations = false
+grails.plugin.springsecurity.rejectIfNoRule = false
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.tribal.security.Account'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.tribal.security.AccountRole'
 grails.plugin.springsecurity.authority.className = 'com.tribal.security.Role'

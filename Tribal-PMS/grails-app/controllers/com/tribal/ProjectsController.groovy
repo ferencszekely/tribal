@@ -60,10 +60,11 @@ class ProjectsController {
 	 * @param params
 	 */
 	def addNew() {
-		
-		if (params) {
+		// Avoiding use of bindData, as I had many problems/bugs in the past with that
+		if (params && params.date) {
 			def dateFormat = new java.text.SimpleDateFormat("MM/dd/yyyy")
 			def date = dateFormat.parse(params.date)
+			
 			def p = new Projects()
 				p.name = params.name
 				p.code = params.code
@@ -103,9 +104,20 @@ class ProjectsController {
 	 * success or error.
 	 * @param priority
 	 */
+	@Secured('permitAll()')
 	def verifyPriority() {
 		try {
-			
+			def priority = params.pr.toInteger()
+			if (priority) {
+				def existingPriority = Projects.findByPriority(priority)
+				if (existingPriority) {
+					render([error: true] as JSON)
+				} else {
+					render([success: true] as JSON)
+				}
+			} else {
+				render([error: true] as JSON)
+			}
 		} catch (NumberFormatException e) {
 			render([error: true] as JSON)
 		}
