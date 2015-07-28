@@ -10,8 +10,62 @@
 	<div class="col-md-10 addnew">
 		<button type="button" class="btn btn-primary" id="add">Add new Project</button>
 	</div> <!-- /div -->
+	<div class="row addNewProject">
+		<div class="col-md-6">
+			<g:form action="addNew" class="form">
+				<div class="form-group">
+					<label for="name">Project Name</label>
+					<input type="text" class="form-control" id="name" name="name" placeholder="Enter the Alphanumeric project name">
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="code">Project Code</label>
+					<input type="text" class="form-control" id="code" name="code" placeholder="Enter the Alphanumeric project code">
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="techlead">Technical Lead</label>
+					<g:select from="${t}" optionKey="account" optionValue="${{it.firstName +' '+ it.lastName}}" name="techLead" class="form-control"/>
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="techlead">Project Manager</label>
+					<g:select from="${m}" optionKey="account" optionValue="${{it.firstName +' '+ it.lastName}}" name="manager" class="form-control"/>
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="date">Delivery Date</label>
+					<input type="text" class="form-control" name="date" id="date">
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="phase">Phase</label>
+					<g:select from="${phases}" name="phase" class="form-control"/>
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="prio">Priority</label>
+					<input type="number" class="form-control" name="priority" id="priority" placeholder="Please enter a number. See the project list below for priorities.">
+					<p class="inUse" id="inUse">Error: Priority is used by another project!</p>
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<label for="desc">Description</label>
+					<textarea class="form-control" rows="4" name="desc" placeholder="NOT required."></textarea>
+				</div> <!-- /form-group -->
+				<div class="form-group">
+					<button class="btn btn-info" type="submit" id="goProject">Submit</button>
+				</div> <!-- /form-group -->
+			</g:form>
+		</div> <!-- /col-md -->
+	</div> <!-- /nested row -->
+	<g:if test="${flash.success}">
+		<div class="alert alert-success" role="alert">
+			<p>Project successfully added. See below.</p>
+		</div> <!-- /alert -->
+	</g:if>
+	<g:if test="${flash.error}">
+		<div class="alert alert-danger" role="alert">
+	  		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+	  		<span class="sr-only">Error:</span>
+	  		Whoops, something went wrong. Please try again!
+		</div> <!-- /alert -->
+	</g:if>
 	<g:if test="${projects}">
-		<div class="col-md-12">
+		<div class="col-md-12 pInfos">
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
@@ -33,7 +87,7 @@
 								<td>${p?.code}</td>
 								<td><g:personForProject project="${p}" lead="true" /></td>
 								<td><g:personForProject project="${p}" manager="true"/></td>
-								<td>${p?.deliveryDate?.format('yyyy-MM-dd HH:mm')}</td>
+								<td>${p?.deliveryDate?.format('yyyy-MM-dd')}</td>
 								<td>${p?.phase}</td>
 								<td>${p?.priority}</td>
 								<td><g:link action="edit" id="${p?.id}"><button type="button" class="btn btn-primary">Edit</button></g:link></td>

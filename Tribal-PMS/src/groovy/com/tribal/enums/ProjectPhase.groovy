@@ -6,7 +6,7 @@ public enum ProjectPhase {
 	SCOPING("Scoping"),
 	INTERACTION("Interaction"),
 	DEVELOPMENT("Development"),
-	QA("Qa"),
+	QA("QA"),
 	RELEASE("Release")
 	
 	final String value

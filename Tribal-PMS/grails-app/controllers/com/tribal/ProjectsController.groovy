@@ -1,8 +1,12 @@
 package com.tribal
 import grails.plugin.springsecurity.annotation.Secured
 import com.tribal.security.Account
+import com.tribal.security.AccountRole
+import com.tribal.security.Role
 import com.tribal.Projects
+import com.tribal.Person
 import com.tribal.enums.ProjectPhase
+import grails.converters.JSON
 
 @Secured(['ROLE_ADMIN'])
 class ProjectsController {
@@ -37,17 +41,50 @@ class ProjectsController {
 			prj.description = "Desc"
 			prj.save(failOnError: true)
 		}
-			
-		[projects: getProjects()]
+		// Creating a list of technical leads for selection
+		def techs = Role.findByAuthority('ROLE_TECH')
+		def techAccounts = AccountRole.findAllByRole(techs)
+		def techLeads = Person.findAllByAccountInList(techAccounts.account)
+		
+		// Creating a list of managers for selection
+		def mans = Role.findByAuthority('ROLE_MANAGER')
+		def manAccounts = AccountRole.findAllByRole(mans)
+		def managers = Person.findAllByAccountInList(manAccounts.account)
+		
+		
+		[projects: getProjects(), t: techLeads, m: managers, phases: ProjectPhase.values()]
 	}
 	
 	/*
 	 * 	Adding a new project to the database
+	 * @param params
 	 */
 	def addNew() {
-		// need to check priority
-		// save to the db
-		// flush immidiately
+		
+		if (params) {
+			def dateFormat = new java.text.SimpleDateFormat("MM/dd/yyyy")
+			def date = dateFormat.parse(params.date)
+			def p = new Projects()
+				p.name = params.name
+				p.code = params.code
+				p.techLead = Account.findByUsername(params.techLead)
+				p.manager = Account.findByUsername(params.manager)
+				p.deliveryDate = date
+				p.phase = params.phase ? ProjectPhase.values().find {it.value == params.phase} : null
+				p.priority = params.priority.toInteger()
+				p.description = params.desc
+				if (p.save(failOnError: true)) {
+					flash.success = true
+					return redirect(action: 'overView')
+				} else {
+					flash.error = true
+					return redirect(action: 'overView')
+				}
+				
+		} else {
+			flash.error = true
+			return redirect(action: 'overView')
+		}
 	}
 	
 	/*
@@ -60,4 +97,18 @@ class ProjectsController {
 			
 		}
 	}
+	/*
+	 * We need to verify instanly if a priority is
+	 * already in use. Accepts an integer and returns either
+	 * success or error.
+	 * @param priority
+	 */
+	def verifyPriority() {
+		try {
+			
+		} catch (NumberFormatException e) {
+			render([error: true] as JSON)
+		}
+	}
+	
 }

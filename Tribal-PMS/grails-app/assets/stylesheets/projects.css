@@ -1,0 +1,13 @@
+/*
+	Any and all CSS for the Projects section should go here
+*/
+.addNewProject, .pInfos {
+	margin-top: 4%;
+}
+.inUse {
+	color: red;
+	font-size: 13px;
+}
+#inUse {
+	display: none;
+}
