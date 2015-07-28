@@ -14,6 +14,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="bootstrap.min.css"/> 
   		<asset:stylesheet src="simple-sidebar.css"/>
+  		<asset:javascript src="jquery.js"/>
 		<asset:javascript src="bootstrap.min.js"/>
 		<asset:javascript src="projects.js"/>
 		<g:layoutHead/>
@@ -63,10 +64,10 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <!-- <script src="js/jquery.js"></script>  -->
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script>  -->
 
    	
 	</body>

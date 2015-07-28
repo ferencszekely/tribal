@@ -7,8 +7,8 @@
 </head>
 <body>
 
-	<div class="col-md-10">
-		<button type="button" class="btn btn-primary addnew">Add new Project</button>
+	<div class="col-md-10 addnew">
+		<button type="button" class="btn btn-primary" id="add">Add new Project</button>
 	</div> <!-- /div -->
 	<g:if test="${projects}">
 		<div class="col-md-12">
@@ -23,6 +23,7 @@
 							<th>Delivery Date</th>
 							<th>Current Phase</th>
 							<th>Priority</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,6 +36,7 @@
 								<td>${p?.deliveryDate?.format('yyyy-MM-dd HH:mm')}</td>
 								<td>${p?.phase}</td>
 								<td>${p?.priority}</td>
+								<td><g:link action="edit" id="${p?.id}"><button type="button" class="btn btn-primary">Edit</button></g:link></td>
 							</tr>
 						</g:each>
 					</tbody>

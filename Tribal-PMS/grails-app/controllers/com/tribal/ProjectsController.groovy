@@ -40,4 +40,24 @@ class ProjectsController {
 			
 		[projects: getProjects()]
 	}
+	
+	/*
+	 * 	Adding a new project to the database
+	 */
+	def addNew() {
+		// need to check priority
+		// save to the db
+		// flush immidiately
+	}
+	
+	/*
+	 * Editing projects, returning a view with the specified project id
+	 * @param id
+	 */
+	def edit(Integer id) {
+		def project = Projects.get(id)
+		if (project) {
+			
+		}
+	}
 }
