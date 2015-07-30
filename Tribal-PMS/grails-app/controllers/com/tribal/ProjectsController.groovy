@@ -80,7 +80,7 @@ class ProjectsController {
 				p.phase = params.phase ? ProjectPhase.values().find {it.value == params.phase} : null
 				p.priority = params.priority.toInteger()
 				p.description = params.desc
-				if (p.save(failOnError:true)) {
+				if (p.save(flush: true)) {
 					flash.success = true
 					return redirect(action: 'overView')
 				} else {
@@ -107,7 +107,6 @@ class ProjectsController {
 			[p: project, t: techs(), m: mans(), lead: currentLead, manager: currentManager, phases: ProjectPhase.values()]
 		
 		} else {
-			log.info("there's an error")
 			flash.error = true
 			return render(view: 'edit')
 		}
@@ -132,11 +131,11 @@ class ProjectsController {
 				flash.success = true
 				return redirect(action: 'overView')
 			} else {
-				flash.error1 = true
+				flash.error = true
 				return render(view: 'edit', params: [p: params])
 			}
 		} else {
-			flash.error2 = true
+			flash.error = true
 			return render(view: 'edit', params: [p: params])
 		}
 	}
