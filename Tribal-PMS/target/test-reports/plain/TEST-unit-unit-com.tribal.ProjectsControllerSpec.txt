@@ -1,0 +1,10 @@
+Testsuite: com.tribal.ProjectsControllerSpec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 11,281 sec
+------------- Standard Output ---------------
+--Output from test index--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from test index--
+------------- ---------------- ---------------
+
+Testcase: test index took 11,103 sec

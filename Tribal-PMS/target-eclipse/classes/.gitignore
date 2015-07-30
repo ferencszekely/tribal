@@ -1,3 +1,5 @@
+/grails/
+/org/
 /AssetPipelineBootStrap$_closure1.class
 /AssetPipelineBootStrap.class
 /BootStrap$_closure1.class
@@ -70,7 +72,5 @@
 /UrlMappings.class
 /asset/
 /com/
-/grails/
-/org/
 /resources$_run_closure1.class
 /resources.class
