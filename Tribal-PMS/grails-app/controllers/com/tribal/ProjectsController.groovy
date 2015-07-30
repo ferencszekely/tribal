@@ -107,6 +107,7 @@ class ProjectsController {
 			[p: project, t: techs(), m: mans(), lead: currentLead, manager: currentManager, phases: ProjectPhase.values()]
 		
 		} else {
+			log.info("there's an error")
 			flash.error = true
 			return render(view: 'edit')
 		}

@@ -81,24 +81,27 @@ class ProjectsControllerSpec extends Specification {
 	
 	void "test edit"() {
 		given: "project"
+			Account tech = new Account(username: 't', password: 't').save(flush: true)
+			Account man = new Account(username: 'm', password: 'm').save(flush: true)
 			Projects project = new Projects(
 				name: 'testProject',
 				code: 'tst0001',	
-				techLead: new Account(username: 't', password: 't').save(flush: true),
-				manager: new Account(username: 'm', password: 'm').save(flush: true),
+				techLead: tech ,
+				manager: man,
 				deliveryDate: new Date(),
 				phase: ProjectPhase.DEVELOPMENT,
 				priority: 13,
 				description: ''
 			)
 			project.save(flush: true)
+			Person person = new Person(firstName: 'techFirst', lastName: 'techLast', account: tech).save(flush: true)
+			Person person2 = new Person(firstName: 'manFirst', lastName: 'manLast', account: man).save(flush: true)
 			
 		when: 
 			params.id = 1
 			controller.edit()
 			
 		then:
-			response.redirectedUrl == "/projects/edit/1"
 			response.status == response.SC_OK
 	}
 }

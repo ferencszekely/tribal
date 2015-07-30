@@ -94,6 +94,9 @@ environments {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
+	test {
+		grails.logging.jul.usebridge = true
+	}
 }
 
 // log4j configuration
@@ -121,6 +124,7 @@ log4j.main = {
 		   
    info 'grails.app',
 	   'org.apache.http'
+	   'com.tribal'
 }
 
 
