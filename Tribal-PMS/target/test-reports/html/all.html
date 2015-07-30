@@ -14,9 +14,13 @@
         Unit Test Results
      - All tests </h1>
 <p class="intro">
-                        A single test executed
+                        Executed
+                        4
+                        tests
                     
-                        without a single error or failure!
+                        with
+                        one failure
+                        .
                     </p>
 </div>
 <div class="grid_2 omega">
@@ -39,13 +43,17 @@
 </nav>
 </div>
 <div class="clear"></div>
-<div class="testsuite success">
+<div class="testsuite failure">
 <div class="header">
 <h2>ProjectsControllerSpec</h2>
 <h3>
-                        A single test executed
+                        Executed
+                        4
+                        tests
                     
-                        without a single error or failure!
+                        with
+                        one failure
+                        .
                     </h3>
 </div>
 <div class="testcase clearfix success grid_8 alpha omega" data-name="test index">
@@ -53,20 +61,77 @@
 <p>
 <span class="icon success"></span><b class="testname message success">test index</b>
 </p>
-<p class="summary">Executed in 11.103 seconds.</p>
+<p class="summary">Executed in 12.157 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="test overView">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">test overView</b>
+</p>
+<p class="summary">Executed in 0.312 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="test add project">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">test add project</b>
+</p>
+<p class="summary">Executed in 0.801 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix failure grid_8 alpha omega" data-name="test edit">
+<div class="grid_3 alpha">
+<p>
+<span class="icon failure"></span><b class="testname message failure">test edit</b>
+</p>
+<p class="summary">Executed in 0.35 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">Condition not satisfied:
+
+response.redirectedUrl == "/edit/1"
+|        |             |
+|        null          false
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@4fea5ee0
+</b>
+</p>
+<pre>junit.framework.AssertionFailedError: Condition not satisfied:
+
+response.redirectedUrl == "/edit/1"
+|        |             |
+|        null          false
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@4fea5ee0
+
+	at com.tribal.ProjectsControllerSpec.test edit(ProjectsControllerSpec.groovy:101)
+</pre>
+</div>
+</div>
 <div class="clear"></div>
 </div>
 <div class="clearfix output footer">
 <div class="sysout">
 <h2>Standard output</h2>
 <pre class="stdout">--Output from test index--
+--Output from test overView--
+--Output from test add project--
+--Output from test edit--
 </pre>
 </div>
 <div class="syserr">
 <h2>System error</h2>
 <pre class="syserr">--Output from test index--
+--Output from test overView--
+--Output from test add project--
+--Output from test edit--
 </pre>
 </div>
 </div>

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="SlipStream" id="0" name="ProjectsControllerSpec" package="com.tribal" tests="1" time="11.281" timestamp="2015-07-30T10:32:02">
+  <testsuite errors="0" failures="1" hostname="SlipStream" id="0" name="ProjectsControllerSpec" package="com.tribal" tests="4" time="13.78" timestamp="2015-07-30T12:30:00">
       <properties />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test index" time="11.103" />
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test index" time="12.157" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test overView" time="0.312" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test add project" time="0.801" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test edit" time="0.35">
+          <failure message="Condition not satisfied:&#xa;&#xa;response.redirectedUrl == &quot;/edit/1&quot;&#xa;|        |             |&#xa;|        null          false&#xa;org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@4fea5ee0&#xa;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Condition not satisfied:
+
+response.redirectedUrl == &quot;/edit/1&quot;
+|        |             |
+|        null          false
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@4fea5ee0
+
+	at com.tribal.ProjectsControllerSpec.test edit(ProjectsControllerSpec.groovy:101)
+</failure>
+
+      </testcase>
 
       <system-out><![CDATA[--Output from test index--
+--Output from test overView--
+--Output from test add project--
+--Output from test edit--
 ]]></system-out>
 
       <system-err><![CDATA[--Output from test index--
+--Output from test overView--
+--Output from test add project--
+--Output from test edit--
 ]]></system-err>
 
   </testsuite>

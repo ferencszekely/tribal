@@ -1,10 +1,36 @@
 Testsuite: com.tribal.ProjectsControllerSpec
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 11,281 sec
+Tests run: 4, Failures: 1, Errors: 0, Time elapsed: 13,78 sec
 ------------- Standard Output ---------------
 --Output from test index--
+--Output from test overView--
+--Output from test add project--
+--Output from test edit--
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 --Output from test index--
+--Output from test overView--
+--Output from test add project--
+--Output from test edit--
 ------------- ---------------- ---------------
 
-Testcase: test index took 11,103 sec
+Testcase: test index took 12,157 sec
+Testcase: test overView took 0,312 sec
+Testcase: test add project took 0,801 sec
+Testcase: test edit took 0,348 sec
+	FAILED
+Condition not satisfied:
+
+response.redirectedUrl == "/edit/1"
+|        |             |
+|        null          false
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@4fea5ee0
+
+junit.framework.AssertionFailedError: Condition not satisfied:
+
+response.redirectedUrl == "/edit/1"
+|        |             |
+|        null          false
+org.codehaus.groovy.grails.plugins.testing.GrailsMockHttpServletResponse@4fea5ee0
+
+	at com.tribal.ProjectsControllerSpec.test edit(ProjectsControllerSpec.groovy:101)
+

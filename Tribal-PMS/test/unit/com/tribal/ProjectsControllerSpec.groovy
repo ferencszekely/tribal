@@ -15,6 +15,7 @@ import grails.test.mixin.hibernate.HibernateTestMixin
 import com.tribal.security.Account
 import com.tribal.security.AccountRole
 import com.tribal.security.Role
+import com.tribal.enums.ProjectPhase
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
@@ -42,4 +43,62 @@ class ProjectsControllerSpec extends Specification {
 		then:
 		response.status == response.SC_OK
     }
+	
+	void "test overView"() {
+		when:
+		controller.overView()
+		
+		then:
+		response.status == response.SC_OK
+	}
+	
+	void "test add project"() {
+		given: "accounts mocked"
+			Account tech = new Account(username: 'testtech', password: 'testpass').save(flush: true)
+			Account man = new Account(username: 'testman', password: 'testpass').save(flush: true)
+			
+		and: "params set"
+			controller.params.name = "testproj"
+			controller.params.code = "test00x1"
+			controller.params.techLead = "testtech"
+			controller.params.manager = "testman"
+			controller.params.date = "07/31/2015"
+			controller.params.phase = "Briefing"
+			controller.params.priority = 51
+			controller.params.desc = "Description for test"
+			
+		when: "action call"
+			controller.addNew()
+			// controller.save()
+			
+		then: "should be redirected to /view"
+			response.redirectedUrl == "/view"
+			
+		and: "it should have success flash message"
+			flash.success == true
+			
+	}
+	
+	void "test edit"() {
+		given: "project"
+			Projects project = new Projects(
+				name: 'testProject',
+				code: 'tst0001',	
+				techLead: new Account(username: 't', password: 't').save(flush: true),
+				manager: new Account(username: 'm', password: 'm').save(flush: true),
+				deliveryDate: new Date(),
+				phase: ProjectPhase.DEVELOPMENT,
+				priority: 13,
+				description: ''
+			)
+			project.save(flush: true)
+			
+		when: 
+			params.id = 1
+			controller.edit()
+			
+		then:
+			response.redirectedUrl == "/projects/edit/1"
+			response.status == response.SC_OK
+	}
 }

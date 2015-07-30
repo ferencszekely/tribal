@@ -80,16 +80,16 @@ class ProjectsController {
 				p.phase = params.phase ? ProjectPhase.values().find {it.value == params.phase} : null
 				p.priority = params.priority.toInteger()
 				p.description = params.desc
-				if (p.save(flush:true)) {
+				if (p.save(failOnError:true)) {
 					flash.success = true
 					return redirect(action: 'overView')
 				} else {
-					flash.error = true
+					flash.error1 = true
 					return redirect(action: 'overView')
 				}
 				
 		} else {
-			flash.error = true
+			flash.error2 = true
 			return redirect(action: 'overView')
 		}
 	}
