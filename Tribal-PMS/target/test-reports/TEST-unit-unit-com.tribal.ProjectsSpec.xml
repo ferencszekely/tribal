@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="SlipStream" name="com.tribal.ProjectsSpec" tests="1" time="0.66" timestamp="2015-07-30T14:38:06">
+<testsuite errors="0" failures="0" hostname="SlipStream" name="com.tribal.ProjectsSpec" tests="1" time="0.735" timestamp="2015-07-30T14:45:06">
   <properties />
-  <testcase classname="com.tribal.ProjectsSpec" name="test validation" time="0.646" />
+  <testcase classname="com.tribal.ProjectsSpec" name="test validation" time="0.717" />
   <system-out><![CDATA[--Output from test validation--
 ]]></system-out>
   <system-err><![CDATA[--Output from test validation--

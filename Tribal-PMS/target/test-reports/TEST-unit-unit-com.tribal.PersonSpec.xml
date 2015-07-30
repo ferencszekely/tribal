@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="SlipStream" name="com.tribal.PersonSpec" tests="1" time="6.085" timestamp="2015-07-30T14:37:52">
+<testsuite errors="0" failures="0" hostname="SlipStream" name="com.tribal.PersonSpec" tests="1" time="6.33" timestamp="2015-07-30T14:44:51">
   <properties />
-  <testcase classname="com.tribal.PersonSpec" name="test that none of the fields can be blank or null" time="5.903" />
+  <testcase classname="com.tribal.PersonSpec" name="test that none of the fields can be blank or null" time="6.142" />
   <system-out><![CDATA[--Output from test that none of the fields can be blank or null--
 ]]></system-out>
   <system-err><![CDATA[--Output from test that none of the fields can be blank or null--

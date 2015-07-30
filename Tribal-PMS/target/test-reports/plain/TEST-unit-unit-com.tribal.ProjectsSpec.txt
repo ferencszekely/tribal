@@ -1,5 +1,5 @@
 Testsuite: com.tribal.ProjectsSpec
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0,66 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0,735 sec
 ------------- Standard Output ---------------
 --Output from test validation--
 ------------- ---------------- ---------------
@@ -7,4 +7,4 @@ Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0,66 sec
 --Output from test validation--
 ------------- ---------------- ---------------
 
-Testcase: test validation took 0,646 sec
+Testcase: test validation took 0,717 sec

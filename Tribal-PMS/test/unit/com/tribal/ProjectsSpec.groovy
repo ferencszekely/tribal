@@ -40,7 +40,7 @@ class ProjectsSpec extends Specification {
 			
 		when: "the name is alphanumeric"
 			project.name = "Project0011"
-		then: " validation should pass"
+		then: "validation should pass"
 			project.validate()
 			!project.hasErrors()
 		
@@ -50,5 +50,11 @@ class ProjectsSpec extends Specification {
 			!project.validate()	
 			project.hasErrors()
 			project.errors['manager'] == 'nullable'
+			
+		when: "priority is already used"
+			project.priority = 1
+		then: "validation should fail"
+			!project.validate()
+			project.hasErrors()
 	}
 }

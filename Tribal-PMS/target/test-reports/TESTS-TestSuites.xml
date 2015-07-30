@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="SlipStream" id="0" name="PersonSpec" package="com.tribal" tests="1" time="6.085" timestamp="2015-07-30T14:37:52">
+  <testsuite errors="0" failures="0" hostname="SlipStream" id="0" name="PersonSpec" package="com.tribal" tests="1" time="6.33" timestamp="2015-07-30T14:44:51">
       <properties />
 
-      <testcase classname="com.tribal.PersonSpec" name="test that none of the fields can be blank or null" time="5.903" />
+      <testcase classname="com.tribal.PersonSpec" name="test that none of the fields can be blank or null" time="6.142" />
 
       <system-out><![CDATA[--Output from test that none of the fields can be blank or null--
 ]]></system-out>
@@ -12,18 +12,18 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="SlipStream" id="1" name="ProjectsControllerSpec" package="com.tribal" tests="5" time="7.753" timestamp="2015-07-30T14:37:58">
+  <testsuite errors="0" failures="0" hostname="SlipStream" id="1" name="ProjectsControllerSpec" package="com.tribal" tests="5" time="7.904" timestamp="2015-07-30T14:44:58">
       <properties />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test index" time="6.515" />
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test index" time="6.579" />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test overView" time="0.219" />
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test overView" time="0.224" />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test add project" time="0.515" />
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test add project" time="0.586" />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test edit" time="0.181" />
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test edit" time="0.246" />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test submit edit" time="0.277" />
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test submit edit" time="0.228" />
 
       <system-out><![CDATA[--Output from test index--
 --Output from test overView--
@@ -40,10 +40,10 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="SlipStream" id="2" name="ProjectsSpec" package="com.tribal" tests="1" time="0.66" timestamp="2015-07-30T14:38:06">
+  <testsuite errors="0" failures="0" hostname="SlipStream" id="2" name="ProjectsSpec" package="com.tribal" tests="1" time="0.735" timestamp="2015-07-30T14:45:06">
       <properties />
 
-      <testcase classname="com.tribal.ProjectsSpec" name="test validation" time="0.646" />
+      <testcase classname="com.tribal.ProjectsSpec" name="test validation" time="0.717" />
 
       <system-out><![CDATA[--Output from test validation--
 ]]></system-out>
