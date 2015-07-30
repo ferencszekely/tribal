@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="SlipStream" id="0" name="ProjectsControllerSpec" package="com.tribal" tests="4" time="12.8" timestamp="2015-07-30T13:00:34">
+  <testsuite errors="0" failures="0" hostname="SlipStream" id="0" name="PersonSpec" package="com.tribal" tests="1" time="6.019" timestamp="2015-07-30T13:37:21">
       <properties />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test index" time="11.383" />
+      <testcase classname="com.tribal.PersonSpec" name="test that none of the fields can be blank or null" time="5.277" />
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test overView" time="0.264" />
+      <system-out><![CDATA[--Output from test that none of the fields can be blank or null--
+]]></system-out>
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test add project" time="0.735" />
+      <system-err><![CDATA[--Output from test that none of the fields can be blank or null--
+]]></system-err>
 
-      <testcase classname="com.tribal.ProjectsControllerSpec" name="test edit" time="0.273" />
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="SlipStream" id="1" name="ProjectsControllerSpec" package="com.tribal" tests="5" time="7.305" timestamp="2015-07-30T13:37:27">
+      <properties />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test index" time="5.884" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test overView" time="0.236" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test add project" time="0.609" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test edit" time="0.248" />
+
+      <testcase classname="com.tribal.ProjectsControllerSpec" name="test submit edit" time="0.278" />
 
       <system-out><![CDATA[--Output from test index--
 --Output from test overView--
 --Output from test add project--
 --Output from test edit--
-stuff is null
+--Output from test submit edit--
 ]]></system-out>
 
       <system-err><![CDATA[--Output from test index--
 --Output from test overView--
 --Output from test add project--
 --Output from test edit--
+--Output from test submit edit--
 ]]></system-err>
 
   </testsuite>

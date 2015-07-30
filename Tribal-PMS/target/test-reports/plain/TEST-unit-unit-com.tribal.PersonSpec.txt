@@ -1,0 +1,10 @@
+Testsuite: com.tribal.PersonSpec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 6,019 sec
+------------- Standard Output ---------------
+--Output from test that none of the fields can be blank or null--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from test that none of the fields can be blank or null--
+------------- ---------------- ---------------
+
+Testcase: test that none of the fields can be blank or null took 5,277 sec

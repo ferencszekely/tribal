@@ -1,0 +1,1 @@
+--Output from test that none of the fields can be blank or null--

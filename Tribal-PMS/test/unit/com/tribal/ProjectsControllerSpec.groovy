@@ -80,7 +80,7 @@ class ProjectsControllerSpec extends Specification {
 	}
 	
 	void "test edit"() {
-		given: "project"
+		given: "accounts and project"
 			Account tech = new Account(username: 't', password: 't').save(flush: true)
 			Account man = new Account(username: 'm', password: 'm').save(flush: true)
 			Projects project = new Projects(
@@ -104,4 +104,44 @@ class ProjectsControllerSpec extends Specification {
 		then:
 			response.status == response.SC_OK
 	}
+	
+	void "test submit edit"() {
+		given: "accounts"
+			Account tech = new Account(username: 'testtech', password: 'testpass').save(flush: true)
+			Account man = new Account(username: 'testman', password: 'testpass').save(flush: true)
+			Projects project = new Projects(
+				name: 'testProject',
+				code: 'tst0001',
+				techLead: tech ,
+				manager: man,
+				deliveryDate: new Date(),
+				phase: ProjectPhase.DEVELOPMENT,
+				priority: 13,
+				description: ''
+			)
+			project.save(flush: true)
+		and: "params set"
+			controller.params.name = "modifiedName"
+			controller.params.code = "test00x1"
+			controller.params.techLead = "testtech"
+			controller.params.manager = "testman"
+			controller.params.date = "08/26/2015"
+			controller.params.phase = "Scoping"
+			controller.params.priority = 16
+			controller.params.desc = "Description for test updated"
+			
+		when: "action call"
+			def proj = Projects.findByName("testProject")
+			params.project = proj?.id
+			
+			controller.submitEdit()
+			// controller.save()
+			
+		then: "should be redirected to /view"
+			response.redirectedUrl == "/view"
+			
+		and: "it should have success flash message"
+			flash.success == true
+	}
+	
 }

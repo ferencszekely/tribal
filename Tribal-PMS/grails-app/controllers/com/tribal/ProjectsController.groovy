@@ -84,12 +84,12 @@ class ProjectsController {
 					flash.success = true
 					return redirect(action: 'overView')
 				} else {
-					flash.error1 = true
+					flash.error = true
 					return redirect(action: 'overView')
 				}
 				
 		} else {
-			flash.error2 = true
+			flash.error = true
 			return redirect(action: 'overView')
 		}
 	}
@@ -114,6 +114,7 @@ class ProjectsController {
 	}
 	
 	// updating specified project
+	// TODO maybe we can use the addNew action for this? look into it
 	def submitEdit() {
 		def project = Projects.get(params.project.toInteger())
 		def date = dateFormat.parse(params.date)
@@ -131,11 +132,11 @@ class ProjectsController {
 				flash.success = true
 				return redirect(action: 'overView')
 			} else {
-				flash.error = true
+				flash.error1 = true
 				return render(view: 'edit', params: [p: params])
 			}
 		} else {
-			flash.error = true
+			flash.error2 = true
 			return render(view: 'edit', params: [p: params])
 		}
 	}

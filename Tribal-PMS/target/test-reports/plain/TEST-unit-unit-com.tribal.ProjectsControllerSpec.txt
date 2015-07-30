@@ -1,20 +1,22 @@
 Testsuite: com.tribal.ProjectsControllerSpec
-Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 12,8 sec
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 7,305 sec
 ------------- Standard Output ---------------
 --Output from test index--
 --Output from test overView--
 --Output from test add project--
 --Output from test edit--
-stuff is null
+--Output from test submit edit--
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 --Output from test index--
 --Output from test overView--
 --Output from test add project--
 --Output from test edit--
+--Output from test submit edit--
 ------------- ---------------- ---------------
 
-Testcase: test index took 11,383 sec
-Testcase: test overView took 0,264 sec
-Testcase: test add project took 0,735 sec
-Testcase: test edit took 0,273 sec
+Testcase: test index took 5,884 sec
+Testcase: test overView took 0,236 sec
+Testcase: test add project took 0,609 sec
+Testcase: test edit took 0,248 sec
+Testcase: test submit edit took 0,278 sec
