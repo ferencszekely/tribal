@@ -30,5 +30,5 @@ class PersonSpec extends Specification {
 			
 		then: "validate should pass"
 			p.validate()	
-		}
+	}
 }
